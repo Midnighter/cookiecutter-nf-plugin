@@ -10,5 +10,6 @@
   "license": ["MIT", "BSD-3-Clause", "Apache-2.0", "proprietary"],
   "release_date": "{% now 'local' %}",
   "year": "{{ cookiecutter.release_date[:4] }}",
+  "version": "0.1.0a1",
   "_extensions": ["jinja2_time.TimeExtension", "jinja2_strcase.StrcaseExtension"]
 }

@@ -41,7 +41,7 @@ There are several tests you can use under `plugins/nf-hello/src/test` folder. Yo
 Once tested you can try your plugin in a nextflow sesion:
 
 1. Generate required artifacts with `make build-plugins`
-2. Copy `build/plugins/{{ cookiecutter.plugin_slug }}.zip` to `$HOME/.nextflow/plugins`
+2. Copy `build/plugins/{{ cookiecutter.plugin_slug }}-{{ cookiecutter.version }}.zip` to `$HOME/.nextflow/plugins`
 3. Create a pipeline with your plugin and see it in action
 
 ## Publish
