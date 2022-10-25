@@ -1,0 +1,1 @@
+nextflow.{{ cookiecutter.plugin_package }}.{{ cookiecutter.plugin_class_prefix }}Extension

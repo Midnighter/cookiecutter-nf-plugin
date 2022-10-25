@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Plugin-Id: {{ cookiecutter.plugin_slug }}
+Plugin-Version: 0.4.0
+Plugin-Class: nextflow.{{ cookiecutter.plugin_package }}.{{ cookiecutter.plugin_class_prefix }}Plugin
+Plugin-Provider: nextflow
+Plugin-Requires: >=22.10.0

@@ -1,0 +1,45 @@
+name: {{ cookiecutter.plugin_name }} CI
+on:
+  push:
+    branches:
+      - main
+      - dev
+    tags-ignore:
+      - '*'
+  pull_request:
+    branches:
+      - main
+      - dev
+jobs:
+  build:
+    name: Build {{ cookiecutter.plugin_name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java_version: ["11"]
+
+    steps:
+      - name: Environment
+        run: env | sort
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+          submodules: true
+
+      - name: Setup Java ${{ '{{' }} matrix.java_version {{ '}}' }}
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ '{{' }} matrix.java_version {{ '}}' }}
+          architecture: x64
+
+      - name: Compile
+        run: ./gradlew assemble
+
+      - name: Tests
+        run: ./gradlew check
+        env:
+          GRADLE_OPTS: '-Dorg.gradle.daemon=false'
+

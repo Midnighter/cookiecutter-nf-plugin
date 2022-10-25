@@ -1,0 +1,14 @@
+{
+  "full_name": "",
+  "email": "",
+  "github_username": "",
+  "plugin_name": "My Awesome Nextflow Plugin",
+  "plugin_slug": "{{ cookiecutter.plugin_name | to_kebab }}",
+  "plugin_package": "{{ cookiecutter.plugin_name | to_snake }}",
+  "plugin_class_prefix": "{{ cookiecutter.plugin_name | to_camel }}",
+  "plugin_short_description": "A short description of the plugin",
+  "license": ["MIT", "BSD-3-Clause", "Apache-2.0", "proprietary"],
+  "release_date": "{% now 'local' %}",
+  "year": "{{ cookiecutter.release_date[:4] }}",
+  "_extensions": ["jinja2_time.TimeExtension", "jinja2_strcase.StrcaseExtension"]
+}
