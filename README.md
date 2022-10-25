@@ -18,7 +18,7 @@ pip install cruft jinja2-strcase
 
 ### Create
 
-Then run [`cruft`](https://cruft.github.io/) to generate your project template by answering the questions that follow.
+Then run [`cruft`](https://cruft.github.io/cruft) to generate your project template by answering the questions that follow.
 
 ```bash
 cruft create https://github.com/Midnighter/cookiecutter-nf-plugin
