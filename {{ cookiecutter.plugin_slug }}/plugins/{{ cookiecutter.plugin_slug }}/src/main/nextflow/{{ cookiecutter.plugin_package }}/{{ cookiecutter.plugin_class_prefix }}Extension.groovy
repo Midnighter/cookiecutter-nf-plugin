@@ -72,9 +72,9 @@
  * Copyright (c) {{ cookiecutter.year }} {{ cookiecutter.full_name }}. All rights reserved.
  */
 {% endif %}
-
 package nextflow.{{ cookiecutter.plugin_package }}
 
+import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
 import nextflow.Session
 import nextflow.plugin.extension.PluginExtensionPoint
@@ -85,6 +85,7 @@ import nextflow.plugin.extension.PluginExtensionPoint
  * @author {{ cookiecutter.full_name }}
  */
 @Slf4j
+@CompileStatic
 class {{ cookiecutter.plugin_class_prefix }}Extension extends PluginExtensionPoint{
 
     /**

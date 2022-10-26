@@ -72,7 +72,6 @@
  * Copyright (c) {{ cookiecutter.year }} {{ cookiecutter.full_name }}. All rights reserved.
  */
 {% endif %}
-
 package nextflow.{{ cookiecutter.plugin_package }}
 
 import groovy.transform.CompileStatic
@@ -97,4 +96,5 @@ class {{ cookiecutter.plugin_class_prefix }}Plugin extends BasePlugin {
     {{ cookiecutter.plugin_class_prefix }}Plugin(PluginWrapper wrapper) {
         super(wrapper)
     }
+
 }

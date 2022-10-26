@@ -72,10 +72,10 @@
  * Copyright (c) {{ cookiecutter.year }} {{ cookiecutter.full_name }}. All rights reserved.
  */
 {% endif %}
-
 package nextflow.{{ cookiecutter.plugin_package }}
 
 import groovy.transform.PackageScope
+import groovy.transform.CompileStatic
 
 /**
  * Define the plugin configuration values.
@@ -91,6 +91,7 @@ import groovy.transform.PackageScope
  * @author {{ cookiecutter.full_name }}
  */
 @PackageScope
+@CompileStatic
 class {{ cookiecutter.plugin_class_prefix }}Config {
 
     String key  // TODO: Replace this example attribute.
@@ -100,7 +101,7 @@ class {{ cookiecutter.plugin_class_prefix }}Config {
      *
      * @param map A nextflow plugin wrapper instance.
      */
-    {{ cookiecutter.plugin_class_prefix }}Config(Map map){
+    {{ cookiecutter.plugin_class_prefix }}Config(Map map) {
         final Map config = map ?: [:]
         // TODO: Replace this example assignment.
         this.key = config.key ?: 'default value'
