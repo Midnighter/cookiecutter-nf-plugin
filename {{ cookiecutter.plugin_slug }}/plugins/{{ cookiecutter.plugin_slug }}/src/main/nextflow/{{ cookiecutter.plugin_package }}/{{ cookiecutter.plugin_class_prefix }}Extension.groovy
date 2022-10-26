@@ -86,7 +86,7 @@ import nextflow.plugin.extension.PluginExtensionPoint
  */
 @Slf4j
 @CompileStatic
-class {{ cookiecutter.plugin_class_prefix }}Extension extends PluginExtensionPoint{
+class {{ cookiecutter.plugin_class_prefix }}Extension extends PluginExtensionPoint {
 
     /**
      * A session holds information about current nextflow execution.
