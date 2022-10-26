@@ -99,14 +99,14 @@ def test_init_template(tmp_path: Path, cookie_context: Dict[str, str], license: 
 
 def test_gradlew_check(project: Path):
     """Expect that a newly initialized plugin passes the gradle checks."""
-    subprocess.run(args=["./gradlew", "check"], cwd=project)
+    subprocess.run(args=[str(project / "gradlew"), "check"], cwd=project)
 
 
 def test_gradlew_test(project: Path):
     """Expect that a newly initialized plugin passes the gradle tests."""
-    subprocess.run(args=["./gradlew", "test"], cwd=project)
+    subprocess.run(args=[str(project / "gradlew"), "test"], cwd=project)
 
 
 def test_gradlew_compile_groovy(project: Path):
     """Expect that a newly initialized plugin's Groovy classes can be compiled."""
-    subprocess.run(args=["./gradlew", "compileGroovy"], cwd=project)
+    subprocess.run(args=[str(project / "gradlew"), "compileGroovy"], cwd=project)
