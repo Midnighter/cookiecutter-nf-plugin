@@ -75,37 +75,38 @@ def test_init_template(tmp_path: Path, cookie_context: Dict[str, str], license: 
             **cookie_context,
         },
     )
-    project_files = {str(path.relative_to(tmp_path)) for path in tmp_path.rglob("*")}
+    project_files = {path.relative_to(tmp_path) for path in tmp_path.rglob("*")}
+    root = Path("nf-cycle")
     expected = {
-        "nf-cycle",
-        "nf-cycle/README.md",
-        "nf-cycle/Makefile",
-        "nf-cycle/plugins/build.gradle",
-        "nf-cycle/plugins/nf-cycle",
-        "nf-cycle/plugins/nf-cycle/build.gradle",
-        "nf-cycle/plugins/nf-cycle/src/main/nextflow/cycle",
-        "nf-cycle/plugins/nf-cycle/src/main/nextflow/cycle/CycleConfig.groovy",
-        "nf-cycle/plugins/nf-cycle/src/main/nextflow/cycle/CycleExtension.groovy",
-        "nf-cycle/plugins/nf-cycle/src/main/nextflow/cycle/CyclePlugin.groovy",
-        "nf-cycle/plugins/nf-cycle/src/resources/META-INF",
-        "nf-cycle/plugins/nf-cycle/src/resources/META-INF/extensions.idx",
-        "nf-cycle/plugins/nf-cycle/src/resources/META-INF/MANIFEST.MF",
+        root,
+        root / "README.md",
+        root / "Makefile",
+        root / "plugins" / "build.gradle",
+        root / "plugins" / "nf-cycle",
+        root / "plugins" / "nf-cycle" / "build.gradle",
+        root / "plugins" / "nf-cycle" / "src" / "main" / "nextflow" / "cycle",
+        root / "plugins" / "nf-cycle" / "src" / "main" / "nextflow" / "cycle" / "CycleConfig.groovy",
+        root / "plugins" / "nf-cycle" / "src" / "main" / "nextflow" / "cycle" / "CycleExtension.groovy",
+        root / "plugins" / "nf-cycle" / "src" / "main" / "nextflow" / "cycle" / "CyclePlugin.groovy",
+        root / "plugins" / "nf-cycle" / "src" / "resources" / "META-INF",
+        root / "plugins" / "nf-cycle" / "src" / "resources" / "META-INF" / "extensions.idx",
+        root / "plugins" / "nf-cycle" / "src" / "resources" / "META-INF" / "MANIFEST.MF",
     }
     assert expected.issubset(project_files), expected.difference(project_files)
     if license != "proprietary":
-        assert "nf-cycle/LICENSE" in project_files
+        assert (root / "LICENSE") in project_files
 
 
 def test_gradlew_check(project: Path):
     """Expect that a newly initialized plugin passes the gradle checks."""
-    subprocess.run(args=["./gradlew", "check"], cwd=project)
+    subprocess.run(args=[str(project / "gradlew"), "check"], cwd=project)
 
 
 def test_gradlew_test(project: Path):
     """Expect that a newly initialized plugin passes the gradle tests."""
-    subprocess.run(args=["./gradlew", "test"], cwd=project)
+    subprocess.run(args=[str(project / "gradlew"), "test"], cwd=project)
 
 
 def test_gradlew_compile_groovy(project: Path):
     """Expect that a newly initialized plugin's Groovy classes can be compiled."""
-    subprocess.run(args=["./gradlew", "compileGroovy"], cwd=project)
+    subprocess.run(args=[str(project / "gradlew"), "compileGroovy"], cwd=project)
